@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDC Project — Car Cruise Control System</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;--surface:#111118;--surface2:#1a1a24;--surface3:#22222f;
+  --accent:#ff5722;--accent2:#ff9100;--accent3:#ffd600;
+  --cyan:#00e5ff;--green:#00e676;--purple:#b388ff;
+  --text:#e8e8ef;--text2:#9999ab;--text3:#5a5a6e;
+  --radius:14px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;line-height:1.65;overflow-x:hidden}
+::selection{background:var(--accent);color:#fff}
+a{color:var(--cyan);text-decoration:none;transition:color .2s}
+a:hover{color:var(--accent2)}
+code,.mono{font-family:'JetBrains Mono',monospace}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--surface3);border-radius:3px}
+
+/* Hero */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(255,87,34,.12),transparent 70%),radial-gradient(ellipse 60% 50% at 80% 20%,rgba(0,229,255,.06),transparent 60%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,#000 20%,transparent 70%)}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border:1px solid var(--accent);border-radius:99px;font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:1.5rem;animation:fadeDown .8s ease}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:900;line-height:1.05;letter-spacing:-.02em;max-width:900px;animation:fadeDown 1s ease}
+.hero h1 .grad{background:linear-gradient(135deg,var(--accent),var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{margin-top:1.2rem;font-size:1.1rem;color:var(--text2);max-width:640px;animation:fadeDown 1.2s ease}
+.hero-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-top:2rem;animation:fadeDown 1.4s ease}
+.hero-tags span{padding:.35rem .85rem;background:var(--surface2);border:1px solid var(--surface3);border-radius:99px;font-size:.78rem;color:var(--text2)}
+
+/* Speedometer decoration */
+.speedo{position:absolute;bottom:-80px;right:-80px;width:350px;height:350px;border-radius:50%;border:2px solid var(--surface3);opacity:.15;animation:spin 60s linear infinite}
+.speedo::after{content:'';position:absolute;top:50%;left:50%;width:3px;height:40%;background:var(--accent);transform-origin:bottom center;transform:translate(-50%,-100%) rotate(-30deg);border-radius:2px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Nav dots */
+.nav-dots{position:fixed;right:1.2rem;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:.6rem}
+.nav-dots a{width:8px;height:8px;border-radius:50%;background:var(--surface3);transition:all .3s}
+.nav-dots a:hover,.nav-dots a.active{background:var(--accent);transform:scale(1.4)}
+
+/* Sections */
+.section{padding:5rem 1.5rem;max-width:1200px;margin:0 auto}
+.section-label{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:.8rem}
+.section-label::before{content:'';width:28px;height:1px;background:var(--accent)}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:1rem;line-height:1.15}
+.section-desc{color:var(--text2);max-width:680px;margin-bottom:2.5rem;font-size:.95rem}
+
+/* Cards */
+.card{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--radius);padding:1.8rem;transition:border-color .3s,transform .3s}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card-num{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent);margin-bottom:.6rem;letter-spacing:.1em}
+.card h3{font-size:1.15rem;font-weight:700;margin-bottom:.6rem}
+.card p,.card li{color:var(--text2);font-size:.88rem;line-height:1.7}
+.card ul{padding-left:1.2rem;margin-top:.5rem}
+.card ul li{margin-bottom:.3rem}
+.card ul li::marker{color:var(--accent)}
+
+/* Grid layouts */
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+
+/* Why section */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.why-item{padding:1.4rem;background:var(--surface);border:1px solid var(--surface3);border-radius:var(--radius);text-align:center;transition:all .3s}
+.why-item:hover{border-color:var(--cyan);background:var(--surface2)}
+.why-icon{font-size:1.8rem;margin-bottom:.6rem}
+.why-item h4{font-size:.92rem;font-weight:600;margin-bottom:.3rem}
+.why-item p{font-size:.78rem;color:var(--text2)}
+
+/* Timeline */
+.timeline{position:relative;padding-left:2.5rem}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),var(--cyan),var(--green))}
+.tl-item{position:relative;margin-bottom:1.5rem}
+.tl-item::before{content:'';position:absolute;left:-2.5rem;top:.45rem;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);z-index:1}
+.tl-item:nth-child(2)::before{background:var(--accent2)}
+.tl-item:nth-child(3)::before{background:var(--accent3)}
+.tl-item:nth-child(4)::before{background:var(--cyan)}
+.tl-item:nth-child(5)::before{background:var(--green)}
+.tl-date{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--accent);letter-spacing:.05em}
+.tl-text{font-size:.88rem;color:var(--text2);margin-top:.2rem}
+
+/* Setup box */
+.code-block{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--radius);overflow:hidden;margin-bottom:1.5rem}
+.code-header{padding:.6rem 1rem;background:var(--surface2);font-size:.72rem;color:var(--text3);font-family:'JetBrains Mono',monospace;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--surface3)}
+.code-body{padding:1rem 1.2rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--green);line-height:1.8;overflow-x:auto}
+.code-body .kw{color:var(--cyan)}
+.code-body .comment{color:var(--text3)}
+
+/* Task cards */
+.task-card{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--radius);overflow:hidden;transition:all .3s}
+.task-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.task-header{padding:1rem 1.4rem;display:flex;align-items:center;gap:.8rem;background:var(--surface2);border-bottom:1px solid var(--surface3)}
+.task-number{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.75rem;font-weight:700;color:#fff;flex-shrink:0}
+.task-header h3{font-size:1rem;font-weight:600}
+.task-body{padding:1.4rem}
+.task-body p,.task-body li{font-size:.86rem;color:var(--text2);line-height:1.7}
+.task-body ul{padding-left:1.2rem;margin-top:.5rem}
+.task-body ul li{margin-bottom:.25rem}
+.task-body ul li::marker{color:var(--accent)}
+.task-body .eq{display:block;margin:1rem 0;padding:1rem;background:var(--surface2);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--cyan);overflow-x:auto;white-space:pre-wrap}
+.task-body .note{margin-top:.8rem;padding:.8rem 1rem;background:rgba(0,229,255,.05);border:1px solid rgba(0,229,255,.15);border-radius:8px;font-size:.8rem;color:var(--cyan)}
+.task-body .vars{display:flex;flex-wrap:wrap;gap:.5rem;margin:.8rem 0}
+.task-body .var{padding:.3rem .7rem;background:var(--surface2);border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--accent2)}
+
+/* YouTube cards */
+.yt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
+.yt-card{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--radius);overflow:hidden;transition:all .3s}
+.yt-card:hover{border-color:#ff0000;transform:translateY(-3px)}
+.yt-thumb{position:relative;width:100%;padding-top:56.25%;background:var(--surface2);overflow:hidden}
+.yt-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.yt-card:hover .yt-thumb img{transform:scale(1.05)}
+.yt-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .3s}
+.yt-card:hover .yt-play{opacity:1}
+.yt-play svg{width:54px;height:54px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}
+.yt-info{padding:1rem 1.2rem}
+.yt-info h4{font-size:.9rem;font-weight:600;margin-bottom:.3rem;line-height:1.4}
+.yt-info p{font-size:.75rem;color:var(--text3)}
+
+/* Resource links */
+.resource-list{display:flex;flex-direction:column;gap:.8rem}
+.resource-item{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem;background:var(--surface);border:1px solid var(--surface3);border-radius:var(--radius);transition:all .3s}
+.resource-item:hover{border-color:var(--cyan);transform:translateX(4px)}
+.resource-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem}
+.resource-icon.gold{background:rgba(255,214,0,.1);border:1px solid rgba(255,214,0,.2)}
+.resource-icon.blue{background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.15)}
+.resource-icon.purple{background:rgba(179,136,255,.08);border:1px solid rgba(179,136,255,.15)}
+.resource-icon.green{background:rgba(0,230,118,.08);border:1px solid rgba(0,230,118,.15)}
+.resource-info h4{font-size:.9rem;font-weight:600;margin-bottom:.2rem}
+.resource-info p{font-size:.78rem;color:var(--text3)}
+.resource-info a{font-size:.75rem}
+
+/* Report & Viva */
+.steps-list{counter-reset:step}
+.step-item{counter-increment:step;position:relative;padding:1rem 1.4rem 1rem 3.5rem;background:var(--surface);border:1px solid var(--surface3);border-radius:var(--radius);margin-bottom:.6rem;transition:all .3s;font-size:.88rem;color:var(--text2)}
+.step-item:hover{border-color:var(--accent);background:var(--surface2)}
+.step-item::before{content:counter(step);position:absolute;left:1rem;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;background:var(--surface3);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent);font-weight:600}
+
+/* Viva points */
+.viva-point{position:relative;padding:1rem 1.2rem 1rem 2.8rem;margin-bottom:.5rem;background:var(--surface);border:1px solid var(--surface3);border-radius:var(--radius);font-size:.84rem;color:var(--text2);transition:all .3s;cursor:default}
+.viva-point:hover{border-color:var(--green);background:var(--surface2)}
+.viva-point::before{content:'💡';position:absolute;left:.9rem;top:.9rem;font-size:.9rem}
+
+/* Extensions */
+.ext-card{position:relative;background:var(--surface);border:1px solid var(--surface3);border-radius:var(--radius);padding:1.5rem;transition:all .3s;overflow:hidden}
+.ext-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3))}
+.ext-card:hover{border-color:var(--accent2);transform:translateY(-2px)}
+.ext-num{font-family:'JetBrains Mono',monospace;font-size:2rem;font-weight:800;color:var(--surface3);line-height:1}
+.ext-card h4{font-size:1rem;font-weight:700;margin:.4rem 0 .4rem}
+.ext-card p{font-size:.82rem;color:var(--text2)}
+
+/* Tips banner */
+.tips-banner{background:linear-gradient(135deg,rgba(255,87,34,.08),rgba(255,145,0,.05));border:1px solid rgba(255,87,34,.2);border-radius:var(--radius);padding:2rem;margin-top:3rem}
+.tips-banner h3{font-size:1.1rem;margin-bottom:1rem;color:var(--accent2)}
+.tips-banner ul{padding-left:1.2rem}
+.tips-banner li{font-size:.86rem;color:var(--text2);margin-bottom:.4rem;line-height:1.7}
+.tips-banner li::marker{color:var(--accent)}
+
+/* References */
+.ref-item{padding:.8rem 1rem;background:var(--surface);border-left:3px solid var(--text3);margin-bottom:.5rem;border-radius:0 8px 8px 0;font-size:.82rem;color:var(--text2)}
+
+/* Footer */
+.footer{text-align:center;padding:3rem 1.5rem;border-top:1px solid var(--surface3);margin-top:4rem}
+.footer p{font-size:.78rem;color:var(--text3)}
+.footer .accent{color:var(--accent)}
+
+/* Highlight quote */
+.highlight-quote{position:relative;padding:2rem 2.5rem;margin:2.5rem 0;background:linear-gradient(135deg,var(--surface),var(--surface2));border:1px solid var(--surface3);border-radius:var(--radius);font-size:1rem;font-weight:500;color:var(--text);line-height:1.7;text-align:center}
+.highlight-quote::before{content:'"';position:absolute;top:-.2rem;left:1rem;font-family:'Playfair Display',serif;font-size:4rem;color:var(--accent);opacity:.3}
+
+/* Divider */
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--surface3),transparent);margin:4rem 0}
+
+/* Animations */
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* Mobile */
+@media(max-width:640px){
+  .section{padding:3rem 1rem}
+  .grid-2,.grid-3,.yt-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-dots{display:none}
+  .hero h1{font-size:2.2rem}
+  .task-body .eq{font-size:.7rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Nav Dots -->
+<nav class="nav-dots">
+  <a href="#hero" title="Top"></a>
+  <a href="#why" title="Why"></a>
+  <a href="#timeline" title="Timeline"></a>
+  <a href="#setup" title="Setup"></a>
+  <a href="#tasks" title="Tasks"></a>
+  <a href="#resources" title="Resources"></a>
+  <a href="#report" title="Report"></a>
+  <a href="#viva" title="Viva"></a>
+  <a href="#extensions" title="Extensions"></a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-grid"></div>
+  <div class="speedo"></div>
+  <div class="hero-badge">🚗 Process Dynamics &amp; Control</div>
+  <h1>Car <span class="grad">Cruise Control</span> System</h1>
+  <p class="hero-sub">Complete PDC Project Package — Python-based, fully covering all 11 tasks, educational and resume-ready. Built for April 22 submission &amp; viva.</p>
+  <div class="hero-tags">
+    <span>Python-Based</span>
+    <span>All 11 Tasks</span>
+    <span>PID / PI / P Controllers</span>
+    <span>LQR Extension</span>
+    <span>Nonlinear Simulation</span>
+    <span>Resume-Ready</span>
+  </div>
+</section>
+
+<!-- WHY THIS PROJECT -->
+<section class="section fade-in" id="why">
+  <div class="section-label">Why This Project</div>
+  <div class="section-title">Perfect for Your Group &amp; Resume</div>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-icon">🎯</div>
+      <h4>Classic &amp; Relatable</h4>
+      <p>Every examiner knows cruise control — instant credibility.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">✅</div>
+      <h4>Covers All 11 Tasks</h4>
+      <p>Mass/force balance → linearization → TF → P/PI/PID → tuning → nonlinear sim → disturbance.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">📉</div>
+      <h4>Low Math Complexity</h4>
+      <p>High educational value without overwhelming derivations.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">🚀</div>
+      <h4>Resume Boosters</h4>
+      <p>LQR, adaptive cruise, animation — stand out in automotive/control interviews.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">🐍</div>
+      <h4>100% Python</h4>
+      <p>Fully reproducible. No MATLAB license required.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TIMELINE -->
+<section class="section fade-in" id="timeline">
+  <div class="section-label">Project Timeline</div>
+  <div class="section-title">Tight But Doable — 2 Weeks</div>
+  <div class="section-desc">Follow this plan to hit the April 22 deadline without burning out.</div>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-date">Apr 8 – 10</div><div class="tl-text">Group formation + choose parameters + derive model.</div></div>
+    <div class="tl-item"><div class="tl-date">Apr 11 – 14</div><div class="tl-text">Linearization, transfer function, dynamic analysis, tuning.</div></div>
+    <div class="tl-item"><div class="tl-date">Apr 15 – 18</div><div class="tl-text">Full Python simulations + plots + extensions.</div></div>
+    <div class="tl-item"><div class="tl-date">Apr 19 – 21</div><div class="tl-text">Report writing + slides + viva preparation.</div></div>
+    <div class="tl-item"><div class="tl-date">Apr 22</div><div class="tl-text">Submit report + viva slot. 🎉</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SETUP -->
+<section class="section fade-in" id="setup">
+  <div class="section-label">Section 1</div>
+  <div class="section-title">Python Modules &amp; Setup</div>
+  <div class="section-desc">Install once. These core libraries power every simulation in the project.</div>
+
+  <div class="code-block">
+    <div class="code-header"><span>Terminal</span><span>bash</span></div>
+    <div class="code-body">pip install numpy scipy matplotlib control pandas</div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-num">CORE</div>
+      <h3><code>numpy</code></h3>
+      <p>Arrays &amp; math — the backbone of all numerical computation.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">CORE</div>
+      <h3><code>scipy.integrate</code></h3>
+      <p><code>odeint</code> / <code>solve_ivp</code> — nonlinear ODE solving for the plant model.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">CORE</div>
+      <h3><code>matplotlib</code></h3>
+      <p><code>pyplot</code> + <code>animation</code> — professional plots &amp; car animation.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">CORE</div>
+      <h3><code>control</code></h3>
+      <p>Transfer functions, state-space, PID simulation (python-control).</p>
+    </div>
+    <div class="card">
+      <div class="card-num">OPTIONAL</div>
+      <h3><code>pandas</code></h3>
+      <p>Tabulate IAE/ISE metrics &amp; performance comparison tables.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top:1.2rem;padding:.8rem 1rem;background:rgba(0,229,255,.05);border:1px solid rgba(0,229,255,.15);border-radius:8px;font-size:.82rem;color:var(--cyan)">
+    💡 All code goes in a <strong>single Jupyter notebook</strong> (appendices) — comment heavily for the viva.
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TASKS 1-11 -->
+<section class="section fade-in" id="tasks">
+  <div class="section-label">Section 2</div>
+  <div class="section-title">All 11 Tasks — Step by Step</div>
+  <div class="section-desc">Follow exactly. Every equation, every variable, every educational note — laid out for maximum clarity.</div>
+
+  <div style="display:flex;flex-direction:column;gap:1.5rem">
+
+    <!-- Task 1 -->
+    <div class="task-card">
+      <div class="task-header"><div class="task-number">1</div><h3>Process Description &amp; Schematic</h3></div>
+      <div class="task-body">
+        <div class="vars">
+          <div class="var">CV: Vehicle speed v (m/s)</div>
+          <div class="var">MV: Engine force u (N)</div>
+          <div class="var">Disturbances: θ, wind, payload</div>
+        </div>
+        <p><strong>Schematic:</strong> Free-body diagram showing <em>m</em>, <em>u</em> (engine force), <em>−bv</em> (drag), <em>−mg sin θ</em> (gravity). Block diagram: Setpoint → PID → Plant → Speed (feedback loop) + disturbance input.</p>
+        <div class="note">📚 Cruise control is a <strong>regulatory + servo</strong> problem — maintains speed (regulatory) while allowing driver to change setpoint (servo).</div>
+      </div>
+    </div>
+
+    <!-- Task 2 -->
+    <div class="task-card">
+      <div class="task-header"><div class="task-number">2</div><h3>Model Development — Force Balance (Newton's 2nd Law)</h3></div>
+      <div class="task-body">
+        <p>Nonlinear model with quadratic drag for realism:</p>
+        <div class="eq">m dv/dt = u − bv − cv² − mg sin(θ)</div>
+        <div class="vars">
+          <div class="var">m = 1500 kg</div>
+          <div class="var">b = 50 Ns/m</div>
+          <div class="var">c = 0.5</div>
+          <div class="var">g = 9.81 m/s²</div>
+        </div>
+        <p><strong>Steady-state operating point:</strong> v<sub>s</sub> = 20 m/s (72 km/h), θ<sub>s</sub> = 0, solve for u<sub>s</sub>.</p>
+        <div class="note">🔬 <strong>Derivation:</strong> Sum of forces = ma. Engine force (MV) overcomes drag + gravity.</div>
+      </div>
+    </div>
+
+    <!-- Task 3 -->
+    <div class="task-card">
+      <div class="task-header"><div class="task-number">3</div><h3>Linearization — Around Steady-State</h3></div>
+      <div class="task-body">
+        <p>Deviation variables: v' = v − v<sub>s</sub>, u' = u − u<sub>s</sub>, θ' = θ</p>
+        <p>Linearized (first-order Taylor):</p>
+        <div class="eq">m dv'/dt = −(b + 2cv<sub>s</sub>)v' + u' − mg cos(θ<sub>s</sub>)θ'</div>
+        <p>Simplified (θ<sub>s</sub> = 0):</p>
+        <div class="eq">dv'/dt = −a·v' + b·u' − d·θ'</div>
+        <p>where a, b, d are constants you calculate from the parameters.</p>
+        <div class="note">⚠️ Linearization ignores higher-order terms — valid <strong>only near the operating point</strong>.</div>
+      </div>
+    </div>
+
+    <!-- Task 4 -->
+    <div class="task-card">
+      <div class="task-header"><div class="task-number">4</div><h3>Transfer Function (SISO for Speed)</h3></div>
+      <div class="task-body">
+        <p>Laplace transform (ignoring disturbance first):</p>
+        <div class="eq">G<sub>p</sub>(s) = V'(s)/U'(s) = K / (τs + 1)</div>
+        <div class="vars">
+          <div class="var">K = 1 / (b + 2cv<sub>s</sub>)</div>
+          <div class="var">τ = m / (b + 2cv<sub>s</sub>) ≈ 20-30s</div>
+        </div>
+        <p>Separate disturbance TF:</p>
+        <div class="eq">G<sub>d</sub>(s) = −mg cos(θ<sub>s</sub>) / (ms + (b + 2cv<sub>s</sub>))</div>
+        <div class="note">📐 <strong>System order:</strong> 1 (basic) — easy to analyze.</div>
+      </div>
+    </div>
+
+    <!-- Task 5 -->
+    <div class="task-card">
+      <div class="task-header"><div class="task-number">5</div><h3>Dynamic Analysis</h3></div>
+      <div class="task-body">
+        <ul>
+          <li><strong>Gain K:</strong> Steady-state speed change per unit throttle.</li>
+          <li><strong>Time constant τ:</strong> Speed of response.</li>
+          <li><strong>Open-loop:</strong> Sluggish, no oscillation, approaches new speed asymptotically.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Task 6 -->
+    <div class="task-card">
+      <div class="task-header"><div class="task-number">6</div><h3>Controller Design — P, PI, PID</h3></div>
+      <div class="task-body">
+        <p>PID form in time domain:</p>
+        <div class="eq">u(t) = K<sub>c</sub>[ e(t) + (1/τ<sub>I</sub>)∫e(t)dt + τ<sub>D</sub> de(t)/dt ],  e = v<sub>sp</sub> − v</div>
+        <ul>
+          <li><strong>P:</strong> Fast but has steady-state offset.</li>
+          <li><strong>PI:</strong> Zero offset — best for constant disturbances like mild hills.</li>
+          <li><strong>PID:</strong> Fastest but sensitive to noise (speed sensor).</li>
+        </ul>
+        <div class="note">🏆 <strong>Most suitable:</strong> PI — industry standard for cruise control.</div>
+      </div>
+    </div>
+
+    <!-- Task 7 -->
+    <div class="task-card">
+      <div class="task-header"><div class="task-number">7</div><h3>Controller Tuning — 2 Methods</h3></div>
+      <div class="task-body">
+        <p><strong>1. IMC (Recommended — Robust):</strong></p>
+        <div class="eq">K<sub>c</sub> = (τ + λ) / (Kλ),  τ<sub>I</sub> = τ + λ,  λ = max(0.2τ, dead-time)</div>
+        <p><strong>2. Ziegler-Nichols Reaction Curve:</strong> From open-loop step response → fit FOPDT → apply rules.</p>
+        <p style="margin-top:.6rem">Tabulate gains for P, PI, PID using both methods.</p>
+      </div>
+    </div>
+
+    <!-- Task 8 -->
+    <div class="task-card">
+      <div class="task-header"><div class="task-number">8</div><h3>Simulation — Core Python Work</h3></div>
+      <div class="task-body">
+        <ul>
+          <li><strong>Nonlinear closed-loop:</strong> <code>scipy.integrate.odeint</code> on full nonlinear ODE + discrete PID.</li>
+          <li><strong>Linear validation:</strong> <code>control.TransferFunction</code> + feedback.</li>
+          <li><strong>Setpoint step:</strong> 20 → 30 m/s at t=0.</li>
+          <li><strong>Time:</strong> 0–200 s, dt = 0.1 s.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Task 9 -->
+    <div class="task-card">
+      <div class="task-header"><div class="task-number">9</div><h3>Performance Comparison</h3></div>
+      <div class="task-body">
+        <p>Metrics table (use <code>pandas</code>):</p>
+        <ul>
+          <li>Rise time (10–90%)</li>
+          <li>Overshoot (%)</li>
+          <li>Settling time (±2%)</li>
+          <li>IAE / ISE</li>
+        </ul>
+        <div class="note">📊 <strong>Expected:</strong> P has offset; PI eliminates offset cleanly; PID slightly faster but noisier.</div>
+      </div>
+    </div>
+
+    <!-- Task 10 -->
+    <div class="task-card">
+      <div class="task-header"><div class="task-number">10</div><h3>Disturbance Analysis</h3></div>
+      <div class="task-body">
+        <p>At t = 100 s: sudden road grade θ = +5° (hill).</p>
+        <p>PI/PID reject it best — minimal speed dip, fast recovery.</p>
+      </div>
+    </div>
+
+    <!-- Task 11 -->
+    <div class="task-card">
+      <div class="task-header"><div class="task-number">11</div><h3>Discussion &amp; Recommendation</h3></div>
+      <div class="task-body">
+        <ul>
+          <li>Model captures real physics.</li>
+          <li>Linearization good near 20 m/s.</li>
+          <li><strong>Recommendation:</strong> PI controller (IMC-tuned) — robust, zero offset, simple.</li>
+          <li><strong>Limitations:</strong> Sensor noise, actuator saturation, nonlinear drag at high speed.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RESOURCES -->
+<section class="section fade-in" id="resources">
+  <div class="section-label">Section 3</div>
+  <div class="section-title">Educational Resources</div>
+  <div class="section-desc">Study these and cite in your report. ~2–3 hours of video + essential reading.</div>
+
+  <h3 style="font-size:1.1rem;margin-bottom:1.2rem">🎬 YouTube Videos — Watch in Order</h3>
+  <div class="yt-grid">
+
+    <a href="https://www.youtube.com/watch?v=vxTJMGqjGdg" target="_blank" class="yt-card">
+      <div class="yt-thumb">
+        <img src="https://img.youtube.com/vi/vxTJMGqjGdg/hqdefault.jpg" alt="Steve Brunton PI Control" loading="lazy">
+        <div class="yt-play"><svg viewBox="0 0 68 48"><path d="M66.5 7.7s-.7-4.6-2.6-6.6C60.8-2 57.3-2 55.7-2.2 46.5-3 34-3 34-3s-12.5 0-21.7 .8c-1.6.2-5.1.2-8.2 3.3-1.9 2-2.6 6.6-2.6 6.6S.8 13.2.8 18.6v5.1c0 5.4.7 10.9.7 10.9s.7 4.6 2.6 6.6c3.1 3.2 7.2 3.1 9 3.4C19.7 45.3 34 45.5 34 45.5s12.5 0 21.7-.8c1.6-.2 5.1-.2 8.2-3.3 1.9-2 2.6-6.6 2.6-6.6s.7-5.4.7-10.9v-5.1C67.2 13.2 66.5 7.7 66.5 7.7z" fill="#FF0000"/><path d="M27 33V13l18 10z" fill="#FFF"/></svg></div>
+      </div>
+      <div class="yt-info">
+        <h4>Cruise Control with PI Control</h4>
+        <p>Steve Brunton — Control Bootcamp</p>
+      </div>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=k46nCvOBllA" target="_blank" class="yt-card">
+      <div class="yt-thumb">
+        <img src="https://img.youtube.com/vi/k46nCvOBllA/hqdefault.jpg" alt="PID Velocity Control" loading="lazy">
+        <div class="yt-play"><svg viewBox="0 0 68 48"><path d="M66.5 7.7s-.7-4.6-2.6-6.6C60.8-2 57.3-2 55.7-2.2 46.5-3 34-3 34-3s-12.5 0-21.7 .8c-1.6.2-5.1.2-8.2 3.3-1.9 2-2.6 6.6-2.6 6.6S.8 13.2.8 18.6v5.1c0 5.4.7 10.9.7 10.9s.7 4.6 2.6 6.6c3.1 3.2 7.2 3.1 9 3.4C19.7 45.3 34 45.5 34 45.5s12.5 0 21.7-.8c1.6-.2 5.1-.2 8.2-3.3 1.9-2 2.6-6.6 2.6-6.6s.7-5.4.7-10.9v-5.1C67.2 13.2 66.5 7.7 66.5 7.7z" fill="#FF0000"/><path d="M27 33V13l18 10z" fill="#FFF"/></svg></div>
+      </div>
+      <div class="yt-info">
+        <h4>PID Velocity Control in Python</h4>
+        <p>Exact Python steps for velocity PID</p>
+      </div>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=cP7XbaOf8iA" target="_blank" class="yt-card">
+      <div class="yt-thumb">
+        <img src="https://img.youtube.com/vi/cP7XbaOf8iA/hqdefault.jpg" alt="Cruise Control Simulink" loading="lazy">
+        <div class="yt-play"><svg viewBox="0 0 68 48"><path d="M66.5 7.7s-.7-4.6-2.6-6.6C60.8-2 57.3-2 55.7-2.2 46.5-3 34-3 34-3s-12.5 0-21.7 .8c-1.6.2-5.1.2-8.2 3.3-1.9 2-2.6 6.6-2.6 6.6S.8 13.2.8 18.6v5.1c0 5.4.7 10.9.7 10.9s.7 4.6 2.6 6.6c3.1 3.2 7.2 3.1 9 3.4C19.7 45.3 34 45.5 34 45.5s12.5 0 21.7-.8c1.6-.2 5.1-.2 8.2-3.3 1.9-2 2.6-6.6 2.6-6.6s.7-5.4.7-10.9v-5.1C67.2 13.2 66.5 7.7 66.5 7.7z" fill="#FF0000"/><path d="M27 33V13l18 10z" fill="#FFF"/></svg></div>
+      </div>
+      <div class="yt-info">
+        <h4>Cruise Control in Simulink</h4>
+        <p>Visual tuning walkthrough</p>
+      </div>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=ZMI_kpNUgJM" target="_blank" class="yt-card">
+      <div class="yt-thumb">
+        <img src="https://img.youtube.com/vi/ZMI_kpNUgJM/hqdefault.jpg" alt="PID Python Simulation" loading="lazy">
+        <div class="yt-play"><svg viewBox="0 0 68 48"><path d="M66.5 7.7s-.7-4.6-2.6-6.6C60.8-2 57.3-2 55.7-2.2 46.5-3 34-3 34-3s-12.5 0-21.7 .8c-1.6.2-5.1.2-8.2 3.3-1.9 2-2.6 6.6-2.6 6.6S.8 13.2.8 18.6v5.1c0 5.4.7 10.9.7 10.9s.7 4.6 2.6 6.6c3.1 3.2 7.2 3.1 9 3.4C19.7 45.3 34 45.5 34 45.5s12.5 0 21.7-.8c1.6-.2 5.1-.2 8.2-3.3 1.9-2 2.6-6.6 2.6-6.6s.7-5.4.7-10.9v-5.1C67.2 13.2 66.5 7.7 66.5 7.7z" fill="#FF0000"/><path d="M27 33V13l18 10z" fill="#FFF"/></svg></div>
+      </div>
+      <div class="yt-info">
+        <h4>Creating &amp; Tuning PID with Python</h4>
+        <p>Full Python simulation tutorial</p>
+      </div>
+    </a>
+
+  </div>
+
+  <h3 style="font-size:1.1rem;margin:2.5rem 0 1.2rem">📖 Articles &amp; Tutorials</h3>
+  <div class="resource-list">
+    <div class="resource-item">
+      <div class="resource-icon gold">🏛️</div>
+      <div class="resource-info">
+        <h4>U-Michigan CTMS — Cruise Control</h4>
+        <p>Gold standard reference for modeling, transfer function &amp; controller design.</p>
+        <a href="https://ctms.engin.umich.edu/CTMS/index.php?example=CruiseControl&section=SystemModeling" target="_blank">ctms.engin.umich.edu →</a>
+      </div>
+    </div>
+    <div class="resource-item">
+      <div class="resource-icon blue">🐍</div>
+      <div class="resource-info">
+        <h4>Python-Control Library — Cruise Example</h4>
+        <p>Exact code you can adapt for your simulations.</p>
+        <a href="https://python-control.readthedocs.io/en/latest/examples/cruise.html" target="_blank">python-control.readthedocs.io →</a>
+      </div>
+    </div>
+    <div class="resource-item">
+      <div class="resource-icon green">🔋</div>
+      <div class="resource-info">
+        <h4>LibreTexts — EV Cruise Control Case Study</h4>
+        <p>Electric vehicle variant — great for extension section.</p>
+        <a href="https://eng.libretexts.org/Bookshelves/Industrial_and_Systems_Engineering/.../6.08" target="_blank">eng.libretexts.org →</a>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-size:1.1rem;margin:2.5rem 0 1.2rem">💻 GitHub Repos to Study</h3>
+  <div class="resource-list">
+    <div class="resource-item">
+      <div class="resource-icon purple">⚙️</div>
+      <div class="resource-info">
+        <h4>komrad36/PyCruiseControl</h4>
+        <p>Physics sim + PID implementation.</p>
+        <a href="https://github.com/komrad36/PyCruiseControl" target="_blank">github.com/komrad36 →</a>
+      </div>
+    </div>
+    <div class="resource-item">
+      <div class="resource-icon purple">⚙️</div>
+      <div class="resource-info">
+        <h4>simorxb/PID-Controller-Python</h4>
+        <p>Car speed PID class implementation.</p>
+        <a href="https://github.com/simorxb/PID-Controller-Python" target="_blank">github.com/simorxb →</a>
+      </div>
+    </div>
+    <div class="resource-item">
+      <div class="resource-icon purple">⚙️</div>
+      <div class="resource-info">
+        <h4>pareespathak/cruise_controller-</h4>
+        <p>Simple PID tasks for cruise control.</p>
+        <a href="https://github.com/pareespathak/cruise_controller-" target="_blank">github.com/pareespathak →</a>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-size:1.1rem;margin:2.5rem 0 1.2rem">🐦 X / Twitter — Real-World Context</h3>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-num">@matlabsolution1</div>
+      <h3>MATLAB Cruise Sim (2025)</h3>
+      <p>Great for visualization ideas — see how professionals present control simulations.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">openpilot / comma.ai</div>
+      <h3>Adaptive Cruise in Python</h3>
+      <p>Discussions on real-world adaptive cruise control — shows industry relevance of your project.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REPORT STRUCTURE -->
+<section class="section fade-in" id="report">
+  <div class="section-label">Section 4</div>
+  <div class="section-title">Report Structure — 10–15 Pages</div>
+  <div class="section-desc">Follow this structure exactly for a clean, professional submission.</div>
+
+  <div class="steps-list">
+    <div class="step-item">Title + Group Names + Objective</div>
+    <div class="step-item">Task 1: Process Description + Schematic (figure)</div>
+    <div class="step-item">Tasks 2–5: Modeling, Linearization, TF, Dynamic Analysis (all equations in KaTeX)</div>
+    <div class="step-item">Tasks 6–7: Controller Design + Tuning (tables of gains)</div>
+    <div class="step-item">Tasks 8–10: Simulation Results (6–8 high-quality matplotlib plots + IAE table)</div>
+    <div class="step-item">Task 11: Discussion + Recommendation</div>
+    <div class="step-item">Resume Extensions Section</div>
+    <div class="step-item">References (cite all resources above)</div>
+    <div class="step-item">Appendices: Full commented Python code + extra plots</div>
+  </div>
+
+  <div class="note" style="margin-top:1.2rem;padding:.8rem 1rem;background:rgba(0,229,255,.05);border:1px solid rgba(0,229,255,.15);border-radius:8px;font-size:.82rem;color:var(--cyan)">
+    📊 <strong>Figures required:</strong> Open-loop step, closed-loop (P/PI/PID overlay), disturbance response, car animation frames.
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- VIVA -->
+<section class="section fade-in" id="viva">
+  <div class="section-label">Section 5</div>
+  <div class="section-title">Viva / Presentation — 10–12 Slides</div>
+  <div class="section-desc">8–10 minute presentation. Structure your slides exactly like this.</div>
+
+  <div class="steps-list">
+    <div class="step-item">Title + Problem Chosen</div>
+    <div class="step-item">Process Schematic + CV / MV / Disturbances</div>
+    <div class="step-item">Nonlinear Model Derivation (show force balance equation)</div>
+    <div class="step-item">Linearization &amp; Transfer Function (show math steps)</div>
+    <div class="step-item">Open-Loop Dynamic Analysis</div>
+    <div class="step-item">P / PI / PID Design &amp; Tuning Methods (rules + gains table)</div>
+    <div class="step-item">Closed-Loop Setpoint Tracking Plots (P vs PI vs PID)</div>
+    <div class="step-item">Disturbance Rejection Plots (road grade)</div>
+    <div class="step-item">Performance Comparison Table + Metrics</div>
+    <div class="step-item">Resume Extensions (LQR, animation, adaptive) — WOW factor</div>
+    <div class="step-item">Discussion &amp; Recommendation</div>
+    <div class="step-item">Thank You + Questions</div>
+  </div>
+
+  <h3 style="font-size:1.1rem;margin:2.5rem 0 1.2rem">💡 Important Viva Points — Memorize These</h3>
+  <div class="viva-point">"We derived the model from Newton's law — why force balance, not energy?"</div>
+  <div class="viva-point">"Linearization is valid only near operating point because of quadratic drag term."</div>
+  <div class="viva-point">"PI is preferred over PID because derivative amplifies speed sensor noise."</div>
+  <div class="viva-point">"IMC tuning chosen for robustness — λ = 0.5τ gives good trade-off."</div>
+  <div class="viva-point">"Disturbance rejection shows PI returns to setpoint in &lt;30 s with &lt;1 m/s dip."</div>
+  <div class="viva-point">"Extension: We added LQR for optimal control comparison — shows modern knowledge."</div>
+  <div class="viva-point">Real-world: "Actuator saturation and anti-windup needed in actual cars."</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXTENSIONS -->
+<section class="section fade-in" id="extensions">
+  <div class="section-label">Section 6</div>
+  <div class="section-title">Resume-Boosting Extensions</div>
+  <div class="section-desc">Go beyond assignment requirements. Mention in Report Section 11 &amp; Slides.</div>
+
+  <div class="grid-2">
+    <div class="ext-card">
+      <div class="ext-num">01</div>
+      <h4>Real-Time Animation</h4>
+      <p>matplotlib <code>FuncAnimation</code> — car moving on road with live speedometer gauge.</p>
+    </div>
+    <div class="ext-card">
+      <div class="ext-num">02</div>
+      <h4>LQR Controller</h4>
+      <p>Linear Quadratic Regulator in state-space — compare side-by-side with PID. Shows optimal control knowledge.</p>
+    </div>
+    <div class="ext-card">
+      <div class="ext-num">03</div>
+      <h4>Feedforward Compensation</h4>
+      <p>Road-grade feedforward using a simple observer — proactive disturbance rejection.</p>
+    </div>
+    <div class="ext-card">
+      <div class="ext-num">04</div>
+      <h4>Adaptive Cruise Control</h4>
+      <p>Add distance to lead car — switch between speed &amp; gap control. Inspired by openpilot / comma.ai.</p>
+    </div>
+    <div class="ext-card">
+      <div class="ext-num">05</div>
+      <h4>Electric Vehicle Variant</h4>
+      <p>Replace u with motor torque + battery dynamics (from LibreTexts) — modern EV angle.</p>
+    </div>
+  </div>
+
+  <div class="highlight-quote">
+    "Beyond assignment requirements, we implemented LQR and animation to demonstrate advanced control techniques used in modern ADAS systems."
+  </div>
+
+  <!-- Final Tips -->
+  <div class="tips-banner">
+    <h3>🎯 Final Tips for Full Marks + Resume Impact</h3>
+    <ul>
+      <li><strong>All plots:</strong> Grid on, legends, labels with units, professional color schemes.</li>
+      <li><strong>Code in appendix:</strong> Well-commented, fully runnable in a single notebook.</li>
+      <li><strong>Viva:</strong> Bring laptop with notebook open — demo live simulation if asked.</li>
+      <li><strong>This package is self-contained:</strong> Start deriving the model today!</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REFERENCES -->
+<section class="section fade-in">
+  <div class="section-label">References</div>
+  <div class="section-title">Citations (APA Style)</div>
+  <div class="ref-item">Åström, K. J., &amp; Murray, R. M. — <em>Feedback Systems</em> (via python-control examples).</div>
+  <div class="ref-item">University of Michigan — Control Tutorials for MATLAB &amp; Simulink (CTMS).</div>
+  <div class="ref-item">Brunton, S. — Control Bootcamp, YouTube lecture series.</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>Car Cruise Control — PDC Project Package</p>
+  <p style="margin-top:.4rem">Submission: <span class="accent">April 22, 2026</span> · BITS Pilani · Group: [Your 5 Names]</p>
+  <p style="margin-top:.8rem;font-style:italic;color:var(--text3)">"Designed &amp; Simulated Automotive Cruise Control with PID, LQR &amp; Python Dynamics Modeling" 🚀</p>
+</footer>
+
+<script>
+// Intersection Observer for fade-in
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// Active nav dot
+const sections = document.querySelectorAll('section[id]');
+const dots = document.querySelectorAll('.nav-dots a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 300) current = s.id; });
+  dots.forEach((d, i) => {
+    d.classList.toggle('active', d.getAttribute('href') === '#' + current);
+  });
+}, { passive: true });
+</script>
+
+</body>
+</html>
