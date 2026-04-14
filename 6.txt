@@ -1,0 +1,136 @@
+IMPORTANT:
+Preserve consistency with prior markdown files.
+If you disagree with earlier assumptions/conclusions, explicitly state the issue before deviating.
+Do NOT silently contradict prior sections.
+
+We are continuing the same Car Cruise Control Process Dynamics and Control (CHE F342) project.
+
+This is **Section 6 of 6**.
+
+Use all prior conclusions, assumptions, models, controller designs, simulation framework, and analysis methodology from previous sections as binding context unless clearly flawed. Build directly upon them.
+
+You must focus ONLY on the scope of this section.
+
+--------------------------------------------------
+SECTION 6 OBJECTIVE
+REPORT CONSTRUCTION, PRESENTATION STRATEGY, AND VIVA PREPARATION
+--------------------------------------------------
+
+Your task is to provide guidance for packaging the technical work into a high-quality academic submission and defending it effectively in viva/discussion.
+
+The response should optimize for clarity, rigor, professionalism, and academic performance.
+
+--------------------------------------------------
+OUTPUT REQUIREMENTS
+--------------------------------------------------
+
+### 1. Professional Report Structure
+Recommend an ideal report structure for this project.
+
+For EACH section include:
+- Purpose of the section
+- What content should be included
+- Expected level of technical detail
+- Common mistakes to avoid
+
+Cover at minimum:
+- Abstract / Executive Summary
+- Introduction / Problem Statement
+- Literature Review / Background
+- Modeling Assumptions
+- Mathematical Derivation
+- Controller Design
+- Simulation Methodology
+- Results / Analysis
+- Discussion
+- Conclusion / Recommendations
+- References / Appendix
+
+### 2. Writing / Presentation Best Practices
+Provide guidance on:
+- How to write derivations professionally
+- How much detail to include vs omit
+- How to present assumptions/approximations
+- How to present plots/tables effectively
+- How to make work appear rigorous and polished
+
+### 3. Strong Technical Discussion Strategy
+Explain:
+- How to write a high-quality discussion section
+- How to interpret and contextualize results
+- How to discuss limitations professionally
+- How to justify controller recommendations strongly
+
+### 4. Likely Viva / Discussion Questions
+List probable professor questions covering:
+- Modeling choices
+- Assumptions
+- Linearization
+- Transfer function derivation
+- Controller selection
+- Tuning methodology
+- Simulation setup
+- Interpretation of results
+- Engineering tradeoffs
+
+### 5. Deep Follow-Up / Stress-Test Questions
+Provide more challenging conceptual questions that may be asked to test understanding.
+
+Include:
+- “Why did you choose this assumption?”
+- “What if this assumption fails?”
+- “Why not another controller?”
+- “What are model limitations?”
+- “How would real implementation differ?”
+
+### 6. Strong Answer Frameworks
+For each major viva topic:
+- Provide concise but technically strong talking points
+- Explain how to answer confidently and rigorously
+- Mention pitfalls/weak answers to avoid
+
+### 7. Final Quality Checklist
+Provide a final pre-submission checklist covering:
+- Technical completeness
+- Mathematical correctness
+- Simulation completeness
+- Presentation quality
+- Academic rigor
+- Viva readiness
+
+--------------------------------------------------
+IMPORTANT RESPONSE RULES
+--------------------------------------------------
+
+- Focus on academic packaging and defense, not re-deriving technical content.
+- Keep guidance specific to THIS cruise control project.
+- Optimize recommendations for undergraduate engineering evaluation standards.
+- Structure output with markdown-friendly headings/subheadings.
+- Be practical, rigorous, and academically strategic.
+
+Take your time and think deeply before answering.
+Prioritize completeness, rigor, and engineering quality over brevity.
+
+--------------------------------------------------
+CONTEXT / FILE INSTRUCTIONS
+--------------------------------------------------
+
+Use the prior markdown files below as authoritative project context:
+
+01_literature_and_problem_framing.md
+02_mathematical_modeling_and_derivation.md
+03_controller_design_and_tuning.md
+04_python_simulation_and_testing_framework.md
+05_analysis_and_performance_evaluation.md
+
+Build directly upon all prior work unless clearly flawed.
+
+Write your response directly as the full contents of the markdown file:
+
+06_report_construction_and_viva_prep.md
+
+Requirements:
+- Output ONLY markdown suitable for direct saving into the file.
+- Maintain consistency with all previous files.
+- Avoid re-deriving technical content unless needed for presentation/viva context.
+- Use professional markdown formatting with clear heading hierarchy.

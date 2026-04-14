@@ -1,0 +1,111 @@
+We are building a high-quality academic Process Dynamics and Control (CHE F342) project on **Car Cruise Control**, and I will be collecting your responses section-by-section into structured markdown files for a GitHub repository.
+
+This is **Section 1 of 6**.
+
+You must focus ONLY on the scope of this section.
+Do NOT discuss later implementation details unless absolutely necessary for context.
+
+Assume future sections will separately cover:
+- Mathematical modeling / derivation
+- Controller design / tuning
+- Simulation framework
+- Analysis / evaluation
+- Report / viva prep
+
+--------------------------------------------------
+SECTION 1 OBJECTIVE
+LITERATURE REVIEW, PROBLEM FRAMING, AND MODELING FOUNDATION
+--------------------------------------------------
+
+Your task is to produce a rigorous, academically strong foundational analysis for the cruise control project.
+
+The response should be written as if advising a high-performing engineering student preparing for a top-grade submission.
+
+--------------------------------------------------
+OUTPUT REQUIREMENTS
+--------------------------------------------------
+
+### 1. Problem Framing
+- Explain car cruise control as a dynamic control system.
+- Define:
+  - Controlled Variable (CV)
+  - Manipulated Variable (MV)
+  - Disturbances
+- Explain why cruise control is an appropriate control-systems case study.
+
+### 2. Literature / Existing Work Survey
+Research and summarize:
+- Canonical cruise control models commonly used in academia
+- Standard textbook / paper / educational derivations of cruise control models
+- Common simplifications used in undergraduate controls education
+- Typical assumptions made in benchmark cruise control studies
+
+### 3. Modeling Fidelity Comparison
+Compare:
+- Simplified linear first-order cruise control models
+- Nonlinear force-balance vehicle models
+- Higher-fidelity automotive longitudinal dynamics models
+
+For each:
+- Advantages
+- Disadvantages
+- Complexity tradeoffs
+- Suitability for this project
+
+### 4. Recommended Modeling Approach
+Recommend the BEST modeling fidelity for this project.
+
+Justify:
+- Why it is sufficiently rigorous
+- Why it remains academically defensible
+- Why it aligns with undergraduate Process Dynamics and Control expectations
+- Why it avoids unnecessary overcomplexity
+
+### 5. Engineering Assumptions Framework
+Provide a recommended set of assumptions for the project model.
+
+For EACH assumption:
+- State the assumption
+- Explain why it is reasonable
+- Explain its mathematical/physical implications
+- Mention limitations introduced
+
+### 6. Preliminary Project Strategy
+Based on the above:
+- Recommend the overall technical direction the project should take
+- Explain what mathematical modeling approach should be followed in the next section
+- Mention pitfalls to avoid before derivation begins
+
+### 7. Reference Guidance
+List:
+- Best textbooks / lecture notes / papers / repositories relevant to this phase
+- Search terms / keywords for further research if needed
+
+--------------------------------------------------
+IMPORTANT RESPONSE RULES
+--------------------------------------------------
+
+- Be rigorous and specific.
+- Prioritize academically established methods over novelty.
+- Keep recommendations aligned with undergraduate Process Dynamics and Control curriculum.
+- Avoid jumping ahead into controller tuning/simulation details.
+- Structure response cleanly with headings/subheadings suitable for direct inclusion into markdown notes.
+- If multiple valid approaches exist, compare them and recommend the strongest.
+
+Take your time and think deeply before answering.
+Prioritize completeness, rigor, and engineering quality over brevity.
+
+--------------------------------------------------
+OUTPUT / FILE INSTRUCTIONS
+--------------------------------------------------
+
+Write your response directly as the full contents of the markdown file:
+
+01_literature_and_problem_framing.md
+
+Requirements:
+- Output ONLY markdown suitable for direct saving into the file.
+- Do NOT include conversational preamble or postscript.
+- Use professional markdown formatting with clear heading hierarchy.
+- Make the document self-contained and polished.
+- Assume this file will serve as foundational context for later project sections.

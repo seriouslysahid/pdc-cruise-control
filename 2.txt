@@ -1,0 +1,134 @@
+IMPORTANT:
+Preserve consistency with prior markdown files.
+If you disagree with earlier assumptions/conclusions, explicitly state the issue before deviating.
+Do NOT silently contradict prior sections.
+
+We are continuing the same Car Cruise Control Process Dynamics and Control (CHE F342) project.
+
+This is **Section 2 of 6**.
+
+Use the conclusions, assumptions, and recommended modeling approach from your previous response as binding context unless they are clearly flawed. Build directly upon them.
+
+You must focus ONLY on the scope of this section.
+Do NOT discuss controller design, tuning, simulation implementation, or report-writing unless absolutely necessary for context.
+
+--------------------------------------------------
+SECTION 2 OBJECTIVE
+MATHEMATICAL MODELING AND SYSTEM DERIVATION
+--------------------------------------------------
+
+Your task is to rigorously derive the mathematical model for the cruise control system selected in Section 1.
+
+The response should be technically detailed, derivation-focused, and suitable for direct inclusion into engineering project notes.
+
+--------------------------------------------------
+OUTPUT REQUIREMENTS
+--------------------------------------------------
+
+### 1. System Definition
+- Clearly define the physical system being modeled.
+- Re-state the selected model scope/fidelity from Section 1.
+- Define all variables, parameters, and symbols before derivation.
+
+### 2. Governing Physics / Force Balance Derivation
+Derive the nonlinear dynamic model from first principles.
+
+Include all chosen effects from Section 1, such as applicable:
+- Propulsive / engine / traction force
+- Aerodynamic drag
+- Rolling resistance
+- Gravitational road slope disturbance
+- Any other included modeled effects
+
+For each term:
+- Derive/explain physical basis
+- State assumptions involved
+- Explain sign conventions
+
+### 3. Final Nonlinear Dynamic Equation
+- Present the complete nonlinear governing differential equation.
+- Explain physical interpretation of each term.
+- Comment on system nonlinearity sources.
+
+### 4. Steady-State / Operating Point Analysis
+- Define the operating point used for linearization.
+- Derive steady-state conditions.
+- Explain why this operating point is appropriate.
+
+### 5. Linearization
+Perform rigorous linearization of the nonlinear model about the operating point.
+
+Include:
+- Perturbation variable definitions
+- Taylor series / Jacobian linearization methodology
+- Intermediate derivation steps
+- Final linearized differential equation
+
+### 6. Transfer Function Derivation
+Derive the transfer function from manipulated variable to controlled variable.
+
+Include:
+- Laplace transform steps
+- Assumptions used in transform derivation
+- Final simplified transfer function
+
+### 7. Dynamic Characteristics
+Extract and interpret:
+- Process gain
+- Time constant(s)
+- Order of system
+- Expected open-loop dynamic behavior
+
+### 8. Model Validation / Sanity Checks
+Provide checks for:
+- Dimensional consistency
+- Physical plausibility
+- Limiting-case verification
+- Whether the derived dynamics make intuitive engineering sense
+
+### 9. Common Pitfalls / Errors
+List:
+- Frequent derivation mistakes students make
+- Modeling inconsistencies to avoid
+- Common professor criticisms in viva/report review
+
+### 10. Preparation for Next Section
+Briefly state:
+- What outputs from this derivation will be used in controller design
+- What should be carried forward into the next section
+
+--------------------------------------------------
+IMPORTANT RESPONSE RULES
+--------------------------------------------------
+
+- Be mathematically rigorous.
+- Show derivation logic clearly; do NOT skip important intermediate reasoning.
+- Use academically standard notation.
+- Prioritize engineering defensibility over elegance.
+- Keep output structured with markdown-friendly headings/subheadings.
+- Do NOT redesign modeling assumptions unless absolutely necessary.
+- If an assumption from Section 1 is problematic, explicitly state why before modifying it.
+
+Take your time and think deeply before answering.
+Prioritize completeness, rigor, and engineering quality over brevity.
+
+--------------------------------------------------
+CONTEXT / FILE INSTRUCTIONS
+--------------------------------------------------
+
+Use the prior markdown file below as authoritative project context:
+
+01_literature_and_problem_framing.md
+
+Build directly upon its assumptions, recommendations, and modeling choices unless they are clearly flawed.
+
+Write your response directly as the full contents of the markdown file:
+
+02_mathematical_modeling_and_derivation.md
+
+Requirements:
+- Output ONLY markdown suitable for direct saving into the file.
+- Do NOT restate large portions of prior section unless required for continuity.
+- Reference prior assumptions/modeling choices where relevant.
+- Maintain consistency with previous file.
+- Use professional markdown formatting with clear heading hierarchy.

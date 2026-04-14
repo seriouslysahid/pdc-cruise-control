@@ -1,0 +1,149 @@
+IMPORTANT:
+Preserve consistency with prior markdown files.
+If you disagree with earlier assumptions/conclusions, explicitly state the issue before deviating.
+Do NOT silently contradict prior sections.
+
+We are continuing the same Car Cruise Control Process Dynamics and Control (CHE F342) project.
+
+This is **Section 3 of 6**.
+
+Use the conclusions, assumptions, mathematical model, and transfer function derived in previous sections as binding context unless they are clearly flawed. Build directly upon them.
+
+You must focus ONLY on the scope of this section.
+Do NOT discuss simulation implementation details, report-writing, or viva preparation unless absolutely necessary for context.
+
+--------------------------------------------------
+SECTION 3 OBJECTIVE
+CONTROLLER DESIGN AND TUNING STRATEGY
+--------------------------------------------------
+
+Your task is to design and justify suitable classical controllers for the derived cruise control plant.
+
+The response should be technically rigorous, engineering-focused, and suitable for direct inclusion into project notes.
+
+--------------------------------------------------
+OUTPUT REQUIREMENTS
+--------------------------------------------------
+
+### 1. Control Objective Restatement
+- Clearly restate the control problem using the derived plant model.
+- Define control goals quantitatively and qualitatively.
+- State practical performance expectations for cruise control.
+
+### 2. Plant Behavior and Control Implications
+Analyze the derived plant from a controls perspective:
+- Stability characteristics
+- Pole/zero structure
+- Relative order
+- Open-loop behavior
+- Disturbance sensitivity
+- Implications for controller selection
+
+### 3. P Controller Design
+Provide:
+- Design rationale
+- Expected closed-loop behavior
+- Strengths / weaknesses for this plant
+- Theoretical tuning methodology
+- Expected limitations in cruise control application
+
+### 4. PI Controller Design
+Provide:
+- Design rationale
+- Why integral action may help
+- Expected performance improvements over P
+- Potential drawbacks
+- Theoretical tuning methodology
+
+### 5. PID Controller Design
+Provide:
+- Design rationale
+- Role of derivative action in this plant
+- When derivative helps/hurts
+- Noise sensitivity considerations
+- Practical implementation concerns
+
+### 6. Controller Comparison and Recommendation
+Compare P / PI / PID specifically for THIS cruise control system.
+
+Discuss:
+- Tracking performance
+- Disturbance rejection
+- Steady-state error
+- Robustness
+- Noise sensitivity
+- Practical implementability
+
+Recommend which controller is EXPECTED to perform best and justify thoroughly.
+
+### 7. Tuning Methodology Selection
+Compare relevant tuning methods:
+- IMC
+- Ziegler–Nichols
+- Cohen-Coon
+- ITAE / direct synthesis / others if applicable
+
+For each:
+- Suitability for this plant
+- Advantages / disadvantages
+- Expected tuning aggressiveness
+- Academic defensibility for CHE F342
+
+Recommend:
+- Primary tuning method to use
+- Secondary/alternative method if useful
+
+### 8. Practical Implementation Considerations
+Discuss:
+- Actuator saturation
+- Integrator windup
+- Derivative kick
+- Measurement noise
+- Filtering needs
+- Sampling/discretization considerations (briefly, if relevant)
+
+### 9. Common Pitfalls / Academic Weaknesses
+List:
+- Typical controller design mistakes students make
+- Weak justifications professors may criticize
+- Poor assumptions to avoid
+
+### 10. Preparation for Next Section
+Briefly state:
+- What controller/tuning data should be carried into simulation
+- What scenarios should be tested in simulation based on design expectations
+
+--------------------------------------------------
+IMPORTANT RESPONSE RULES
+--------------------------------------------------
+
+- Base all reasoning on the specific plant derived previously.
+- Do NOT provide generic textbook PID descriptions detached from this system.
+- Be rigorous and analytical.
+- Prioritize academically defensible engineering reasoning.
+- Structure output with markdown-friendly headings/subheadings.
+- Make explicit engineering judgments/recommendations rather than staying neutral when appropriate.
+
+Take your time and think deeply before answering.
+Prioritize completeness, rigor, and engineering quality over brevity.
+
+--------------------------------------------------
+CONTEXT / FILE INSTRUCTIONS
+--------------------------------------------------
+
+Use the prior markdown files below as authoritative project context:
+
+01_literature_and_problem_framing.md
+02_mathematical_modeling_and_derivation.md
+
+Build directly upon all prior assumptions, models, and derivations unless clearly flawed.
+
+Write your response directly as the full contents of the markdown file:
+
+03_controller_design_and_tuning.md
+
+Requirements:
+- Output ONLY markdown suitable for direct saving into the file.
+- Avoid re-deriving earlier material unnecessarily.
+- Maintain consistency with prior files.
+- Use professional markdown formatting with clear heading hierarchy.

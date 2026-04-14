@@ -1,0 +1,132 @@
+IMPORTANT:
+Preserve consistency with prior markdown files.
+If you disagree with earlier assumptions/conclusions, explicitly state the issue before deviating.
+Do NOT silently contradict prior sections.
+
+We are continuing the same Car Cruise Control Process Dynamics and Control (CHE F342) project.
+
+This is **Section 5 of 6**.
+
+Use all prior conclusions, assumptions, mathematical models, controller designs, and simulation framework from previous sections as binding context unless clearly flawed. Build directly upon them.
+
+You must focus ONLY on the scope of this section.
+Do NOT discuss report-writing structure or viva preparation unless absolutely necessary for context.
+
+--------------------------------------------------
+SECTION 5 OBJECTIVE
+ANALYSIS, PERFORMANCE EVALUATION, AND ENGINEERING INTERPRETATION
+--------------------------------------------------
+
+Your task is to define how simulation/controller results should be analyzed, interpreted, compared, and converted into strong engineering conclusions.
+
+The response should help transform raw simulation outputs into academically rigorous technical discussion.
+
+--------------------------------------------------
+OUTPUT REQUIREMENTS
+--------------------------------------------------
+
+### 1. Controller Comparison Framework
+Define a rigorous methodology for comparing P, PI, and PID controllers.
+
+Explain:
+- Which criteria should dominate evaluation
+- How tradeoffs should be weighed
+- How to compare fairly across controllers
+
+### 2. Performance Interpretation Guidelines
+For EACH major performance metric:
+- Explain what high/low values imply physically
+- Explain how to interpret results in cruise control context
+- Explain tradeoffs between competing metrics
+
+Metrics to cover as relevant:
+- Rise time
+- Settling time
+- Overshoot
+- Steady-state error
+- IAE / ISE / ITAE
+- Control effort
+- Disturbance rejection speed
+- Oscillation / damping
+
+### 3. Expected Behavioral Trends
+Predict and explain likely behaviors of:
+- P controller
+- PI controller
+- PID controller
+
+Across:
+- Setpoint tracking
+- Disturbance rejection
+- Robustness tests
+
+Explain WHY each behavior is expected.
+
+### 4. Disturbance Rejection Analysis Framework
+Explain:
+- How to evaluate disturbance rejection rigorously
+- What strong vs weak rejection looks like
+- Which controller features improve disturbance rejection
+- Tradeoffs introduced
+
+### 5. Robustness / Sensitivity Analysis Framework
+Explain:
+- How parameter uncertainty should affect interpretation
+- How to judge controller robustness
+- Which robustness weaknesses are acceptable/unacceptable
+
+### 6. Decision Methodology for Best Controller Selection
+Provide a rigorous framework for selecting the “best” controller.
+
+Include:
+- How to justify recommendation academically
+- How to handle cases where no controller dominates every metric
+- How to discuss engineering tradeoffs professionally
+
+### 7. Common Weak Analysis Mistakes
+List:
+- Superficial interpretations students often make
+- Poor comparison logic
+- Weak justifications professors criticize
+
+### 8. Preparation for Final Section
+Briefly state:
+- What conclusions/insights should be carried into report discussion/viva prep
+- Which findings matter most academically
+
+--------------------------------------------------
+IMPORTANT RESPONSE RULES
+--------------------------------------------------
+
+- Focus on engineering interpretation, not simulation setup/code.
+- Be analytical, not descriptive.
+- Tie all reasoning specifically to cruise control application.
+- Prioritize academically rigorous comparative reasoning.
+- Structure output with markdown-friendly headings/subheadings.
+- Make recommendations where appropriate rather than remaining overly neutral.
+
+Take your time and think deeply before answering.
+Prioritize completeness, rigor, and engineering quality over brevity.
+
+--------------------------------------------------
+CONTEXT / FILE INSTRUCTIONS
+--------------------------------------------------
+
+Use the prior markdown files below as authoritative project context:
+
+01_literature_and_problem_framing.md
+02_mathematical_modeling_and_derivation.md
+03_controller_design_and_tuning.md
+04_python_simulation_and_testing_framework.md
+
+Build directly upon all prior work unless clearly flawed.
+
+Write your response directly as the full contents of the markdown file:
+
+05_analysis_and_performance_evaluation.md
+
+Requirements:
+- Output ONLY markdown suitable for direct saving into the file.
+- Maintain consistency with all previous files.
+- Avoid unnecessary repetition of prior technical content.
+- Use professional markdown formatting with clear heading hierarchy.
