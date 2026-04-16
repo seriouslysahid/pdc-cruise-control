@@ -1,0 +1,18 @@
+{
+  "scenario": "S1",
+  "controller": "PID IMC",
+  "controller_key": "PID_IMC",
+  "model": "nonlinear",
+  "metrics": {
+    "rise_time_s": 2.1999999999999993,
+    "settling_time_s": 3.9000000000000004,
+    "overshoot_pct": 0.4398148222691112,
+    "ss_error_pct": -0.03704524996347658,
+    "IAE": 6.3780973742080915,
+    "ISE": 14.567225784461328,
+    "ITAE": 100.0710729801107,
+    "peak_control_effort_N": 7000.0,
+    "total_variation_N": 284107.1415922323,
+    "saturation_fraction": 0.07116104868913857
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "scenario": "S3",
+  "controller": "PI IMC (\u03bb=5)",
+  "controller_key": "PI_IMC_lambda5",
+  "model": "nonlinear",
+  "metrics": {
+    "rise_time_s": 11.0,
+    "settling_time_s": 19.5,
+    "overshoot_pct": 0.0,
+    "ss_error_pct": 0.0038428467674724337,
+    "IAE": 5.087064270929173,
+    "ISE": 2.5460508952761423,
+    "ITAE": 77.07955655581463,
+    "peak_control_effort_N": 788.4497370913289,
+    "total_variation_N": 613.828287049146,
+    "saturation_fraction": 0.0
+  }
+}

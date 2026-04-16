@@ -1,0 +1,19 @@
+{
+  "scenario": "D1",
+  "controller": "P (Kp=295)",
+  "controller_key": "P_295",
+  "model": "linear",
+  "metrics": {
+    "rise_time_s": NaN,
+    "settling_time_s": 49.5,
+    "overshoot_pct": 0.0,
+    "ss_error_pct": 13.685091117174549,
+    "IAE": 290.9771297530812,
+    "ISE": 966.2447906983273,
+    "ITAE": 22500.768901282383,
+    "peak_control_effort_N": 1478.0755176918874,
+    "total_variation_N": 1009.2755176918874,
+    "saturation_fraction": 0.0,
+    "peak_deviation_mps": 3.421272941328432
+  }
+}

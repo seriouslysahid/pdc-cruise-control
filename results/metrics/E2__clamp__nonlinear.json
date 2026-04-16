@@ -1,0 +1,18 @@
+{
+  "scenario": "E2",
+  "controller": "Clamp anti-windup",
+  "controller_key": "clamp",
+  "model": "nonlinear",
+  "metrics": {
+    "rise_time_s": 10.000000000000002,
+    "settling_time_s": 16.900000000000002,
+    "overshoot_pct": 1.2852982086972657,
+    "ss_error_pct": -0.12011941705624214,
+    "IAE": 127.20134593050774,
+    "ISE": 890.4923665396068,
+    "ITAE": 1299.8305474508777,
+    "peak_control_effort_N": 2939.382076225832,
+    "total_variation_N": 5272.505927603203,
+    "saturation_fraction": 0.08326394671107411
+  }
+}

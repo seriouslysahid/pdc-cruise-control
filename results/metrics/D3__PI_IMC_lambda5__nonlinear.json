@@ -1,0 +1,19 @@
+{
+  "scenario": "D3",
+  "controller": "PI IMC (\u03bb=5)",
+  "controller_key": "PI_IMC_lambda5",
+  "model": "nonlinear",
+  "metrics": {
+    "rise_time_s": NaN,
+    "settling_time_s": 160.0,
+    "overshoot_pct": 0.0,
+    "ss_error_pct": -2.6211860273044323,
+    "IAE": 188.64664174793387,
+    "ISE": 339.827259870042,
+    "ITAE": 15128.80295861078,
+    "peak_control_effort_N": 1564.1485978693054,
+    "total_variation_N": 2190.499879534685,
+    "saturation_fraction": 0.0,
+    "peak_deviation_mps": 2.762248053183704
+  }
+}

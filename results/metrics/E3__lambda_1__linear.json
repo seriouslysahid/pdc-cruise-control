@@ -1,0 +1,18 @@
+{
+  "scenario": "E3",
+  "controller": "PI IMC (\u03bb=1)",
+  "controller_key": "lambda_1",
+  "model": "linear",
+  "metrics": {
+    "rise_time_s": 2.1999999999999993,
+    "settling_time_s": 3.8000000000000007,
+    "overshoot_pct": 7.105427357601002e-14,
+    "ss_error_pct": 0.0,
+    "IAE": 4.999999999999938,
+    "ISE": 12.489593739470001,
+    "ITAE": 54.7541659723863,
+    "peak_control_effort_N": 8087.744702237791,
+    "total_variation_N": 15113.089404475673,
+    "saturation_fraction": 0.0
+  }
+}

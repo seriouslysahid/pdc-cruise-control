@@ -1,0 +1,18 @@
+{
+  "scenario": "E2",
+  "controller": "No anti-windup",
+  "controller_key": "none",
+  "model": "nonlinear",
+  "metrics": {
+    "rise_time_s": 32.400000000000006,
+    "settling_time_s": 74.4,
+    "overshoot_pct": 0.0,
+    "ss_error_pct": 0.8424783390246542,
+    "IAE": 184.28338924851386,
+    "ISE": 973.2169873343812,
+    "ITAE": 4211.385912167859,
+    "peak_control_effort_N": 2500.353658431989,
+    "total_variation_N": 4399.296880525002,
+    "saturation_fraction": 0.08326394671107411
+  }
+}

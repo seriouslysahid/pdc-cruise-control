@@ -1,0 +1,524 @@
+{
+  "S1": [
+    {
+      "scenario": "S1",
+      "controller": "P (Kp=295)",
+      "controller_key": "P_295",
+      "model": "linear",
+      "metrics": {
+        "rise_time_s": 18.1,
+        "settling_time_s": 19.5,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 1.3001935147263783,
+        "IAE": 50.37553415126216,
+        "ISE": 81.77455718608014,
+        "ITAE": 1573.5021764143673,
+        "peak_control_effort_N": 1930.2925321247028,
+        "total_variation_N": 2807.9195596468444,
+        "saturation_fraction": 0.0
+      }
+    },
+    {
+      "scenario": "S1",
+      "controller": "P (Kp=295)",
+      "controller_key": "P_295",
+      "model": "nonlinear",
+      "metrics": {
+        "rise_time_s": 19.6,
+        "settling_time_s": 19.3,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 1.4091490816508312,
+        "IAE": 52.479534576467785,
+        "ISE": 84.75235996341931,
+        "ITAE": 1672.3007359983058,
+        "peak_control_effort_N": 1942.5805441328157,
+        "total_variation_N": 2822.8527673482076,
+        "saturation_fraction": 0.0
+      }
+    },
+    {
+      "scenario": "S1",
+      "controller": "PI IMC (\u03bb=5)",
+      "controller_key": "PI_IMC_lambda5",
+      "model": "linear",
+      "metrics": {
+        "rise_time_s": 11.0,
+        "settling_time_s": 19.5,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 3.356220667901274e-05,
+        "IAE": 24.999979417599658,
+        "ISE": 62.49791674995441,
+        "ITAE": 373.7524171417023,
+        "peak_control_effort_N": 2054.1417382452346,
+        "total_variation_N": 3045.8822620080637,
+        "saturation_fraction": 0.0
+      }
+    },
+    {
+      "scenario": "S1",
+      "controller": "PI IMC (\u03bb=5)",
+      "controller_key": "PI_IMC_lambda5",
+      "model": "nonlinear",
+      "metrics": {
+        "rise_time_s": 11.2,
+        "settling_time_s": 20.1,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 0.05658072736183091,
+        "IAE": 26.67626337803855,
+        "ISE": 63.91951550870968,
+        "ITAE": 444.91888019498913,
+        "peak_control_effort_N": 2067.012666877476,
+        "total_variation_N": 3059.246146556555,
+        "saturation_fraction": 0.0
+      }
+    },
+    {
+      "scenario": "S1",
+      "controller": "PI IMC (\u03bb=1)",
+      "controller_key": "PI_IMC_lambda1",
+      "model": "linear",
+      "metrics": {
+        "rise_time_s": 2.1999999999999993,
+        "settling_time_s": 3.8000000000000007,
+        "overshoot_pct": 7.105427357601002e-14,
+        "ss_error_pct": 0.0,
+        "IAE": 4.990642545227796,
+        "ISE": 12.466180629893891,
+        "ITAE": 54.64236189764832,
+        "peak_control_effort_N": 8101.326576765594,
+        "total_variation_N": 15140.253153531317,
+        "saturation_fraction": 0.0
+      }
+    },
+    {
+      "scenario": "S1",
+      "controller": "PI IMC (\u03bb=1)",
+      "controller_key": "PI_IMC_lambda1",
+      "model": "nonlinear",
+      "metrics": {
+        "rise_time_s": 2.1999999999999993,
+        "settling_time_s": 3.9000000000000004,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 0.009639398889120798,
+        "IAE": 5.640549744112739,
+        "ISE": 14.097071274719418,
+        "ITAE": 71.33550206497293,
+        "peak_control_effort_N": 7000.0,
+        "total_variation_N": 12925.168508615108,
+        "saturation_fraction": 0.003745318352059925
+      }
+    },
+    {
+      "scenario": "S1",
+      "controller": "PI IMC (\u03bb=10)",
+      "controller_key": "PI_IMC_lambda10",
+      "model": "linear",
+      "metrics": {
+        "rise_time_s": 21.9,
+        "settling_time_s": 38.400000000000006,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 0.023050601576564134,
+        "IAE": 49.954632736152234,
+        "ISE": 124.99885543260382,
+        "ITAE": 993.4211204745009,
+        "peak_control_effort_N": 1265.4341904406076,
+        "total_variation_N": 1467.8557473991066,
+        "saturation_fraction": 0.0
+      }
+    },
+    {
+      "scenario": "S1",
+      "controller": "PI IMC (\u03bb=10)",
+      "controller_key": "PI_IMC_lambda10",
+      "model": "nonlinear",
+      "metrics": {
+        "rise_time_s": 22.700000000000003,
+        "settling_time_s": 39.400000000000006,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 0.15634249564599875,
+        "IAE": 52.588389044997314,
+        "ISE": 127.29480188556026,
+        "ITAE": 1124.071360751483,
+        "peak_control_effort_N": 1268.3940626148592,
+        "total_variation_N": 1461.6591281186134,
+        "saturation_fraction": 0.0
+      }
+    },
+    {
+      "scenario": "S1",
+      "controller": "PI ZN",
+      "controller_key": "PI_ZN",
+      "model": "linear",
+      "metrics": {
+        "rise_time_s": 1.5,
+        "settling_time_s": 9.8,
+        "overshoot_pct": 15.207571834917106,
+        "ss_error_pct": -5.921189464667502e-13,
+        "IAE": 7.573294264769077,
+        "ISE": 13.633459919558215,
+        "ITAE": 97.7491635012959,
+        "peak_control_effort_N": 7464.888384612444,
+        "total_variation_N": 14351.550792795915,
+        "saturation_fraction": 0.0
+      }
+    },
+    {
+      "scenario": "S1",
+      "controller": "PI ZN",
+      "controller_key": "PI_ZN",
+      "model": "nonlinear",
+      "metrics": {
+        "rise_time_s": 1.5,
+        "settling_time_s": 9.900000000000002,
+        "overshoot_pct": 15.061835421997216,
+        "ss_error_pct": -1.1723955140041653e-12,
+        "IAE": 7.809251242166344,
+        "ISE": 14.908511148031344,
+        "ITAE": 100.38514699841056,
+        "peak_control_effort_N": 7000.0,
+        "total_variation_N": 13398.150565293206,
+        "saturation_fraction": 0.0024968789013732834
+      }
+    },
+    {
+      "scenario": "S1",
+      "controller": "PI ITAE",
+      "controller_key": "PI_ITAE",
+      "model": "linear",
+      "metrics": {
+        "rise_time_s": 2.299999999999999,
+        "settling_time_s": 3.9000000000000004,
+        "overshoot_pct": 1.8297883741524858e-06,
+        "ss_error_pct": -1.574458134238436e-07,
+        "IAE": 5.161708975626746,
+        "ISE": 12.89418751654937,
+        "ITAE": 56.69193711844004,
+        "peak_control_effort_N": 7860.435856444355,
+        "total_variation_N": 14658.471712888893,
+        "saturation_fraction": 0.0
+      }
+    },
+    {
+      "scenario": "S1",
+      "controller": "PI ITAE",
+      "controller_key": "PI_ITAE",
+      "model": "nonlinear",
+      "metrics": {
+        "rise_time_s": 2.1999999999999993,
+        "settling_time_s": 4.0,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 0.009982024917043475,
+        "IAE": 5.7924182432946205,
+        "ISE": 14.388623108946293,
+        "ITAE": 73.5181864437855,
+        "peak_control_effort_N": 7000.0,
+        "total_variation_N": 12925.169760400662,
+        "saturation_fraction": 0.0024968789013732834
+      }
+    },
+    {
+      "scenario": "S1",
+      "controller": "PID IMC",
+      "controller_key": "PID_IMC",
+      "model": "linear",
+      "metrics": {
+        "rise_time_s": 2.5,
+        "settling_time_s": 4.4,
+        "overshoot_pct": 3.1090507945918948e-09,
+        "ss_error_pct": -3.1239011377692805e-10,
+        "IAE": 5.514926546098468,
+        "ISE": 13.182775666078015,
+        "ITAE": 61.236416512261364,
+        "peak_control_effort_N": 10469.705515258833,
+        "total_variation_N": 19877.011030517977,
+        "saturation_fraction": 0.0
+      }
+    },
+    {
+      "scenario": "S1",
+      "controller": "PID IMC",
+      "controller_key": "PID_IMC",
+      "model": "nonlinear",
+      "metrics": {
+        "rise_time_s": 2.1999999999999993,
+        "settling_time_s": 3.9000000000000004,
+        "overshoot_pct": 0.4398148222691112,
+        "ss_error_pct": -0.03704524996347658,
+        "IAE": 6.3780973742080915,
+        "ISE": 14.567225784461328,
+        "ITAE": 100.0710729801107,
+        "peak_control_effort_N": 7000.0,
+        "total_variation_N": 284107.1415922323,
+        "saturation_fraction": 0.07116104868913857
+      }
+    }
+  ],
+  "D1": [
+    {
+      "scenario": "D1",
+      "controller": "P (Kp=295)",
+      "controller_key": "P_295",
+      "model": "linear",
+      "metrics": {
+        "rise_time_s": NaN,
+        "settling_time_s": 49.5,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 13.685091117174549,
+        "IAE": 290.9771297530812,
+        "ISE": 966.2447906983273,
+        "ITAE": 22500.768901282383,
+        "peak_control_effort_N": 1478.0755176918874,
+        "total_variation_N": 1009.2755176918874,
+        "saturation_fraction": 0.0,
+        "peak_deviation_mps": 3.421272941328432
+      }
+    },
+    {
+      "scenario": "D1",
+      "controller": "P (Kp=295)",
+      "controller_key": "P_295",
+      "model": "nonlinear",
+      "metrics": {
+        "rise_time_s": NaN,
+        "settling_time_s": 49.7,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 13.742869151050996,
+        "IAE": 291.90108270917415,
+        "ISE": 973.1106336357965,
+        "ITAE": 22584.294664007666,
+        "peak_control_effort_N": 1482.3366570183653,
+        "total_variation_N": 1013.5366570183653,
+        "saturation_fraction": 0.0,
+        "peak_deviation_mps": 3.4357174814181874
+      }
+    },
+    {
+      "scenario": "D1",
+      "controller": "PI IMC (\u03bb=5)",
+      "controller_key": "PI_IMC_lambda5",
+      "model": "linear",
+      "metrics": {
+        "rise_time_s": NaN,
+        "settling_time_s": 120.0,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 4.002389722597016,
+        "IAE": 160.91493660771653,
+        "ISE": 321.3553408345814,
+        "ITAE": 10974.668314467028,
+        "peak_control_effort_N": 1563.4704312521928,
+        "total_variation_N": 1094.6704312521929,
+        "saturation_fraction": 0.0,
+        "peak_deviation_mps": 2.75680060226793
+      }
+    },
+    {
+      "scenario": "D1",
+      "controller": "PI IMC (\u03bb=5)",
+      "controller_key": "PI_IMC_lambda5",
+      "model": "nonlinear",
+      "metrics": {
+        "rise_time_s": NaN,
+        "settling_time_s": 120.0,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 3.9933843209417295,
+        "IAE": 160.90897440955024,
+        "ISE": 321.7792242349891,
+        "ITAE": 10974.391225287643,
+        "peak_control_effort_N": 1564.1485978693054,
+        "total_variation_N": 1096.8094563625496,
+        "saturation_fraction": 0.0,
+        "peak_deviation_mps": 2.762248053183704
+      }
+    },
+    {
+      "scenario": "D1",
+      "controller": "PI IMC (\u03bb=1)",
+      "controller_key": "PI_IMC_lambda1",
+      "model": "linear",
+      "metrics": {
+        "rise_time_s": NaN,
+        "settling_time_s": 120.0,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 0.7483114095635699,
+        "IAE": 32.861697743759485,
+        "ISE": 13.788373553275193,
+        "ITAE": 2151.685127917178,
+        "peak_control_effort_N": 1563.470451505803,
+        "total_variation_N": 1094.6704515058032,
+        "saturation_fraction": 0.0,
+        "peak_deviation_mps": 0.6393693380642667
+      }
+    },
+    {
+      "scenario": "D1",
+      "controller": "PI IMC (\u03bb=1)",
+      "controller_key": "PI_IMC_lambda1",
+      "model": "nonlinear",
+      "metrics": {
+        "rise_time_s": NaN,
+        "settling_time_s": 120.0,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 0.7479570006710361,
+        "IAE": 32.81619738464704,
+        "ISE": 13.757379016493033,
+        "ITAE": 2149.837924891972,
+        "peak_control_effort_N": 1562.3632575916863,
+        "total_variation_N": 1093.7120444703771,
+        "saturation_fraction": 0.0,
+        "peak_deviation_mps": 0.6387465677551987
+      }
+    },
+    {
+      "scenario": "D1",
+      "controller": "PI IMC (\u03bb=10)",
+      "controller_key": "PI_IMC_lambda10",
+      "model": "linear",
+      "metrics": {
+        "rise_time_s": NaN,
+        "settling_time_s": 120.0,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 8.736899881461184,
+        "IAE": 311.05105516653015,
+        "ISE": 1170.9963875366093,
+        "ITAE": 22157.23992747297,
+        "peak_control_effort_N": 1563.3360226508876,
+        "total_variation_N": 1094.5360226508876,
+        "saturation_fraction": 0.0,
+        "peak_deviation_mps": 4.853159711386617
+      }
+    },
+    {
+      "scenario": "D1",
+      "controller": "PI IMC (\u03bb=10)",
+      "controller_key": "PI_IMC_lambda10",
+      "model": "nonlinear",
+      "metrics": {
+        "rise_time_s": NaN,
+        "settling_time_s": 120.0,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 8.701198347285441,
+        "IAE": 312.4176551842076,
+        "ISE": 1184.240402346109,
+        "ITAE": 22245.66608608699,
+        "peak_control_effort_N": 1566.4626845443931,
+        "total_variation_N": 1099.2391863193645,
+        "saturation_fraction": 0.0,
+        "peak_deviation_mps": 4.893988281935609
+      }
+    },
+    {
+      "scenario": "D1",
+      "controller": "PI ZN",
+      "controller_key": "PI_ZN",
+      "model": "linear",
+      "metrics": {
+        "rise_time_s": NaN,
+        "settling_time_s": NaN,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 1.4210854715202004e-14,
+        "IAE": 2.521298494849267,
+        "ISE": 0.9344767205608516,
+        "ITAE": 84.18016449918987,
+        "peak_control_effort_N": 1729.9033647093606,
+        "total_variation_N": 1428.6096950280535,
+        "saturation_fraction": 0.0,
+        "peak_deviation_mps": 0.5241445552572053
+      }
+    },
+    {
+      "scenario": "D1",
+      "controller": "PI ZN",
+      "controller_key": "PI_ZN",
+      "model": "nonlinear",
+      "metrics": {
+        "rise_time_s": NaN,
+        "settling_time_s": NaN,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 0.0,
+        "IAE": 2.5178360547085123,
+        "ISE": 0.9326551975501535,
+        "ITAE": 84.19088694575606,
+        "peak_control_effort_N": 1728.556390037806,
+        "total_variation_N": 1427.1875260300394,
+        "saturation_fraction": 0.0,
+        "peak_deviation_mps": 0.5238041780794589
+      }
+    },
+    {
+      "scenario": "D1",
+      "controller": "PI ITAE",
+      "controller_key": "PI_ITAE",
+      "model": "linear",
+      "metrics": {
+        "rise_time_s": NaN,
+        "settling_time_s": 120.0,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 0.7743796260150333,
+        "IAE": 33.9819510620726,
+        "ISE": 14.740465579618474,
+        "ITAE": 2225.8581057797264,
+        "peak_control_effort_N": 1563.4704585882355,
+        "total_variation_N": 1094.6704585882355,
+        "saturation_fraction": 0.0,
+        "peak_deviation_mps": 0.6601370955043642
+      }
+    },
+    {
+      "scenario": "D1",
+      "controller": "PI ITAE",
+      "controller_key": "PI_ITAE",
+      "model": "nonlinear",
+      "metrics": {
+        "rise_time_s": NaN,
+        "settling_time_s": 120.0,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 0.773994971182745,
+        "IAE": 33.93524946533313,
+        "ISE": 14.707520512439725,
+        "ITAE": 2223.9373560061795,
+        "peak_control_effort_N": 1562.3731271066079,
+        "total_variation_N": 1093.7307019662512,
+        "saturation_fraction": 0.0,
+        "peak_deviation_mps": 0.6594959612056677
+      }
+    },
+    {
+      "scenario": "D1",
+      "controller": "PID IMC",
+      "controller_key": "PID_IMC",
+      "model": "linear",
+      "metrics": {
+        "rise_time_s": NaN,
+        "settling_time_s": 120.0,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 0.8289589303240206,
+        "IAE": 36.28425500305208,
+        "ISE": 16.7892976216452,
+        "ITAE": 2379.756612832837,
+        "peak_control_effort_N": 1563.470301381991,
+        "total_variation_N": 1094.670301381991,
+        "saturation_fraction": 0.0,
+        "peak_deviation_mps": 0.7010676254410626
+      }
+    },
+    {
+      "scenario": "D1",
+      "controller": "PID IMC",
+      "controller_key": "PID_IMC",
+      "model": "nonlinear",
+      "metrics": {
+        "rise_time_s": NaN,
+        "settling_time_s": 120.0,
+        "overshoot_pct": 0.0,
+        "ss_error_pct": 0.7163744926119193,
+        "IAE": 33.655454634392015,
+        "ISE": 14.492453616120486,
+        "ITAE": 2161.9549979747126,
+        "peak_control_effort_N": 2036.046027705422,
+        "total_variation_N": 368076.1710859332,
+        "saturation_fraction": 0.0008326394671107411,
+        "peak_deviation_mps": 0.7388558824267726
+      }
+    }
+  ]
+}

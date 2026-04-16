@@ -1,0 +1,19 @@
+{
+  "scenario": "D3",
+  "controller": "P (Kp=295)",
+  "controller_key": "P_295",
+  "model": "nonlinear",
+  "metrics": {
+    "rise_time_s": NaN,
+    "settling_time_s": 160.0,
+    "overshoot_pct": 0.0,
+    "ss_error_pct": 1.133482938087127e-05,
+    "IAE": 171.692788523135,
+    "ISE": 530.5460841881733,
+    "ITAE": 10305.280975077532,
+    "peak_control_effort_N": 1482.284668356673,
+    "total_variation_N": 2026.969221862335,
+    "saturation_fraction": 0.0,
+    "peak_deviation_mps": 3.435541248666688
+  }
+}

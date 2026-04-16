@@ -1,0 +1,19 @@
+{
+  "scenario": "D1",
+  "controller": "PID IMC",
+  "controller_key": "PID_IMC",
+  "model": "linear",
+  "metrics": {
+    "rise_time_s": NaN,
+    "settling_time_s": 120.0,
+    "overshoot_pct": 0.0,
+    "ss_error_pct": 0.8289589303240206,
+    "IAE": 36.28425500305208,
+    "ISE": 16.7892976216452,
+    "ITAE": 2379.756612832837,
+    "peak_control_effort_N": 1563.470301381991,
+    "total_variation_N": 1094.670301381991,
+    "saturation_fraction": 0.0,
+    "peak_deviation_mps": 0.7010676254410626
+  }
+}

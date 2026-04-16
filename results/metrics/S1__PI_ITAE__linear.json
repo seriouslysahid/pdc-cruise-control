@@ -1,0 +1,18 @@
+{
+  "scenario": "S1",
+  "controller": "PI ITAE",
+  "controller_key": "PI_ITAE",
+  "model": "linear",
+  "metrics": {
+    "rise_time_s": 2.299999999999999,
+    "settling_time_s": 3.9000000000000004,
+    "overshoot_pct": 1.8297883741524858e-06,
+    "ss_error_pct": -1.574458134238436e-07,
+    "IAE": 5.161708975626746,
+    "ISE": 12.89418751654937,
+    "ITAE": 56.69193711844004,
+    "peak_control_effort_N": 7860.435856444355,
+    "total_variation_N": 14658.471712888893,
+    "saturation_fraction": 0.0
+  }
+}

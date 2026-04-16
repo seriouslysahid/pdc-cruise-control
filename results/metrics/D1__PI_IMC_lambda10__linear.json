@@ -1,0 +1,19 @@
+{
+  "scenario": "D1",
+  "controller": "PI IMC (\u03bb=10)",
+  "controller_key": "PI_IMC_lambda10",
+  "model": "linear",
+  "metrics": {
+    "rise_time_s": NaN,
+    "settling_time_s": 120.0,
+    "overshoot_pct": 0.0,
+    "ss_error_pct": 8.736899881461184,
+    "IAE": 311.05105516653015,
+    "ISE": 1170.9963875366093,
+    "ITAE": 22157.23992747297,
+    "peak_control_effort_N": 1563.3360226508876,
+    "total_variation_N": 1094.5360226508876,
+    "saturation_fraction": 0.0,
+    "peak_deviation_mps": 4.853159711386617
+  }
+}

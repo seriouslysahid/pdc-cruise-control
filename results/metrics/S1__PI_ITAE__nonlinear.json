@@ -1,0 +1,18 @@
+{
+  "scenario": "S1",
+  "controller": "PI ITAE",
+  "controller_key": "PI_ITAE",
+  "model": "nonlinear",
+  "metrics": {
+    "rise_time_s": 2.1999999999999993,
+    "settling_time_s": 4.0,
+    "overshoot_pct": 0.0,
+    "ss_error_pct": 0.009982024917043475,
+    "IAE": 5.7924182432946205,
+    "ISE": 14.388623108946293,
+    "ITAE": 73.5181864437855,
+    "peak_control_effort_N": 7000.0,
+    "total_variation_N": 12925.169760400662,
+    "saturation_fraction": 0.0024968789013732834
+  }
+}

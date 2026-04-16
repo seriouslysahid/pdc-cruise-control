@@ -1,0 +1,19 @@
+{
+  "scenario": "D1",
+  "controller": "PI ZN",
+  "controller_key": "PI_ZN",
+  "model": "linear",
+  "metrics": {
+    "rise_time_s": NaN,
+    "settling_time_s": NaN,
+    "overshoot_pct": 0.0,
+    "ss_error_pct": 1.4210854715202004e-14,
+    "IAE": 2.521298494849267,
+    "ISE": 0.9344767205608516,
+    "ITAE": 84.18016449918987,
+    "peak_control_effort_N": 1729.9033647093606,
+    "total_variation_N": 1428.6096950280535,
+    "saturation_fraction": 0.0,
+    "peak_deviation_mps": 0.5241445552572053
+  }
+}

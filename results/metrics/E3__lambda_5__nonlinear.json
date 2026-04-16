@@ -1,0 +1,18 @@
+{
+  "scenario": "E3",
+  "controller": "PI IMC (\u03bb=5)",
+  "controller_key": "lambda_5",
+  "model": "nonlinear",
+  "metrics": {
+    "rise_time_s": 11.2,
+    "settling_time_s": 20.1,
+    "overshoot_pct": 0.0,
+    "ss_error_pct": 0.05658072736183091,
+    "IAE": 26.67626337803855,
+    "ISE": 63.91951550870968,
+    "ITAE": 444.91888019498913,
+    "peak_control_effort_N": 2067.012666877476,
+    "total_variation_N": 3059.246146556555,
+    "saturation_fraction": 0.0
+  }
+}

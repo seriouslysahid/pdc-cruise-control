@@ -1,0 +1,18 @@
+{
+  "scenario": "S1",
+  "controller": "P (Kp=295)",
+  "controller_key": "P_295",
+  "model": "nonlinear",
+  "metrics": {
+    "rise_time_s": 19.6,
+    "settling_time_s": 19.3,
+    "overshoot_pct": 0.0,
+    "ss_error_pct": 1.4091490816508312,
+    "IAE": 52.479534576467785,
+    "ISE": 84.75235996341931,
+    "ITAE": 1672.3007359983058,
+    "peak_control_effort_N": 1942.5805441328157,
+    "total_variation_N": 2822.8527673482076,
+    "saturation_fraction": 0.0
+  }
+}

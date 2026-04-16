@@ -1,0 +1,18 @@
+{
+  "scenario": "E2",
+  "controller": "Back-calculation anti-windup",
+  "controller_key": "back_calc",
+  "model": "nonlinear",
+  "metrics": {
+    "rise_time_s": 11.1,
+    "settling_time_s": 20.200000000000003,
+    "overshoot_pct": 0.0,
+    "ss_error_pct": 0.032156698689493154,
+    "IAE": 126.62121767108992,
+    "ISE": 896.9174440542848,
+    "ITAE": 1102.2916652011465,
+    "peak_control_effort_N": 2871.5472895253915,
+    "total_variation_N": 5137.14989392425,
+    "saturation_fraction": 0.08326394671107411
+  }
+}
